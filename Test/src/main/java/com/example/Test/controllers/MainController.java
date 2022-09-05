@@ -27,6 +27,20 @@ public class MainController {
                          Model model)
     {
         double c = 0; //итоговая перменная
+
+        if(deystvie.length() > 1) {
+            model.addAttribute("error","Вы ввели что-то не корректно");
+            return "home";
+        }
+        if(deystvie.contains("+") == false &&
+                deystvie.contains("-") == false &&
+                        deystvie.contains("*") == false &&
+                                deystvie.contains("/") == false
+                                )
+        {
+            model.addAttribute("error","Вы ввели что-то не корректно");
+            return "home";
+        }
         if(deystvie.contains("+")) //выборка действия (да знаю можно switch, но я его не люблю)
         {
             c = a + b;
